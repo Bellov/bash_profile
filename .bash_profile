@@ -62,6 +62,7 @@ alias atom='open -a Atom'
 alias subl='open -a "Sublime Text"'
 alias rbm='open -a "Ruby Mine"'
 alias vsc='open -a "Visual Studio Code"'
+alias javaide='open -a "IntelliJ IDEA CE"'
 
 alias ll='ls -FGlAhp'
 alias sl='ls'
@@ -82,6 +83,7 @@ alias models='cd ~/Projects/sumup_models'
 alias kyc='cd ~/Projects/keysis-web'
 alias dbmigrate='cd ~/Projects/dbmigrate'
 alias risk='cd ~/Projects/risk-management'
+alias pos='cd ~/Projects/mPos'
 
 #os
 alias sleep='sudo pmset -a hibernatemode 0'
@@ -95,21 +97,7 @@ alias cpu_hogs='ps wwaxr -o pid,stat,%cpu,time,command | head -10'
 my_ps() { ps $@ -u $USER -o pid,%cpu,%mem,start,time,bsdtime,command ; }
 alias ps='ps -ax'
 alias grep='grep --color=auto'
-alias weather="curl -s 'http://rss.accuweather.com/rss/liveweather_rss.asp?metric=1&locCode=en|us|brooklyn-ny|11215' | sed -n '/Currently:/ s/.*: \(.*\): \([0-9]*\)\([CF]\).*/\2°\3, \1/p'"
-
-
-#networking
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias netCons='lsof -i'                             # netCons:      Show all open TCP/IP sockets
-alias flushDNS='dscacheutil -flushcache'            # flushDNS:     Flush out the DNS Cache
-alias lsock='sudo /usr/sbin/lsof -i -P'             # lsock:        Display open sockets
-alias lsockU='sudo /usr/sbin/lsof -nP | grep UDP'   # lsockU:       Display only open UDP sockets
-alias lsockT='sudo /usr/sbin/lsof -nP | grep TCP'   # lsockT:       Display only open TCP sockets
-alias ipInfo0='ipconfig getpacket en0'              # ipInfo0:      Get info on connections for en0
-alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
-alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
-alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc
-
+alias totalcode='git ls-files | xargs wc -l'
 #some administrative ones
 alias su='sudo su'
 alias chown='sudo chown'
@@ -125,12 +113,11 @@ alias gs='git status'
 alias gi='git init'
 alias gd='git diff'
 alias gco='git checkout'
-alias gcom='git checkout master'
-alias gcod='git checkout develop'
+alias master='git checkout master'
+alias develop='git checkout develop'
 alias gss='git status --short'
 alias today='grep -h -d skip `date +%m/%d` /usr/share/calendar/*'
 alias glg='git log --date-order --all --graph --format="%C(green)%h%Creset %C(yellow)%an%Creset %C(blue bold)%ar%Creset %C(red bold)%d%Creset%s"'
-
 
 export PS1="\[\033[38m\]\u\[\033[32m\] \w \[\033[31m\]\`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first || '').gsub(/^\* (.+)$/, '(\1) ')\"\`\[\033[37m\]$\[\033[00m\] "
 # export PS1="\[\033[38m\]\u\[\033[32m\] \w \[\033[31m\]\`ruby -e \"print (%x{git branch 2> /dev/null}.split(%r{\n}).grep(/^\*/).first $"
